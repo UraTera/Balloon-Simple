@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText">
+
+    <FrameLayout
+        android:id="@+id/balloonWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        tools:ignore="UselessParent">
+
+        <FrameLayout
+            android:id="@+id/balloonContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:padding="10dp">
+
+            <com.tera.balloon_simple.RadiusLayout
+                android:id="@+id/balloonCard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                tools:background="@android:color/darker_gray">
+
+            </com.tera.balloon_simple.RadiusLayout>
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/balloonArrow"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_arrow_bottom"
+            android:visibility="invisible"
+            app:tint="@android:color/black" />
+
+    </FrameLayout>
+
+</FrameLayout>

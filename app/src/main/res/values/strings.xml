@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Balloon-Simple</string>
+
+    <string name="message">Sunny day and clear sky at night.</string>
+
+    <string name="message2">
+        Partly cloudy, with a few clouds hanging over the horizon but most of the sky remaining clear.
+    </string>
+</resources>
