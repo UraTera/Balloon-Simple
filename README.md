@@ -2,7 +2,7 @@
 
 A minimal number of properties and methods are available.
 
-![Balloon-Simple](https://github.com/user-attachments/assets/d4a70402-bc61-4408-9c6e-98b4f2922235)
+![Balloon](https://github.com/user-attachments/assets/0a5d1ae3-1537-41b2-9d98-32e646de001c)
 
 To use the ready-made library, add the dependency:
 ```
