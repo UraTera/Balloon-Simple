@@ -10,7 +10,7 @@
     tools:ignore="HardcodedText">
 
     <ImageView
-        android:id="@+id/imMark1"
+        android:id="@+id/imMark"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginStart="90dp"
@@ -18,18 +18,6 @@
         android:contentDescription="@string/app_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_location_red" />
-
-    <ImageView
-        android:id="@+id/imMark2"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="70dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/ic_location_red" />
 
     <Button
@@ -52,5 +40,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/viewCenter"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

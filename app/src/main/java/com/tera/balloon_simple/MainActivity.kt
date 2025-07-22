@@ -1,25 +1,18 @@
 package com.tera.balloon_simple
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.tera.balloon_simple.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
-    private lateinit var balloon: Balloon
-
-    private lateinit var imMark1: ImageView
-    private lateinit var imMark2: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,52 +26,73 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        imMark1 = findViewById(R.id.imMark1)
-        imMark2 = findViewById(R.id.imMark2)
-
-        initCustomBallon()
         initButton()
-    }
 
-    private fun initCustomBallon() {
-        val groundColor = ContextCompat.getColor(this, R.color.white)
-
-        balloon = Balloon.Builder(this)
-            .setArrowSize(20)
-            .setIsVisibleArrow(true)
-            .setWidth(170)
-            .setBackgroundColor(groundColor)
-            .setCornerRadius(10f)
-            .setLayout(R.layout.custom_layout)
-            .build()
     }
 
     private fun initButton() = with(binding) {
-        // Верхняя картинка
+        // Top image
         button1.setOnClickListener {
-            val message = getString(R.string.message)
-            createBalloon(imMark1, message)
+            createBalloonTop()
         }
-
+        // Center
         button2.setOnClickListener {
-            val message = getString(R.string.message2)
-            createBalloon(imMark2, message)
+            createBalloonCenter()
         }
     }
 
-    private fun createBalloon(view: View, message: String) {
+    private fun createBalloonTop() {
+        val balloon = Balloon.Builder(this)
+            .setWidth(170)
+            .setCornerRadius(10f)
+            .setLayout(R.layout.custom_layout)
+            .build()
+
+        val tvTitle: TextView = balloon.content().findViewById(R.id.tvTitle)
+        val tvMessage: TextView = balloon.content().findViewById(R.id.tvMessage)
+        val bnOk: Button = balloon.content().findViewById(R.id.bnOk)
+
         val title = "Weather"
-        val tvTitle: TextView = balloon.getContentView().findViewById(R.id.tvTitle)
-        val tvMessage: TextView = balloon.getContentView().findViewById(R.id.tvMessage)
-        val bnOk: Button = balloon.getContentView().findViewById(R.id.bnOk)
         tvTitle.text = title
+        val message = getString(R.string.message)
         tvMessage.text = message
-        balloon.showBalloon(view)
-        //balloon.showBalloon(view, 0, 150)
+
+        val anchor = binding.imMark
+        balloon.showTop(anchor)
+//        balloon.showTop(anchor, 0, -15)
         //balloon.dismissWithDelay(2000)
 
         bnOk.setOnClickListener {
             balloon.dismiss()
         }
     }
+
+    private fun createBalloonCenter() {
+        val balloon = Balloon.Builder(this)
+            .setArrowSize(0)
+            .setIsVisibleArrow(false)
+            .setWidth(170)
+            .setCornerRadius(10f)
+            .setLayout(R.layout.custom_layout)
+            .setAnimation(true)
+            .build()
+
+        val tvTitle: TextView = balloon.content().findViewById(R.id.tvTitle)
+        val tvMessage: TextView = balloon.content().findViewById(R.id.tvMessage)
+        val bnOk: Button = balloon.content().findViewById(R.id.bnOk)
+
+        val title = "Weather"
+        tvTitle.text = title
+        val message = getString(R.string.message2)
+        tvMessage.text = message
+
+        balloon.showCenter()
+//        balloon.showCenter(0, -32)
+//        balloon.dismissWithDelay(2000)
+
+        bnOk.setOnClickListener {
+            balloon.dismiss()
+        }
+    }
+
 }

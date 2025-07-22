@@ -5,7 +5,7 @@ import android.util.TypedValue
 import android.view.View
 import kotlin.math.roundToInt
 
-/** Возвращает Int значение из Int значения px. */
+/** Получить Int значение в px из Int значения в dp. */
 internal  val Int.dp: Int
     inline get() = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP,
@@ -13,7 +13,7 @@ internal  val Int.dp: Int
         Resources.getSystem().displayMetrics,
     ).roundToInt()
 
-/** Возвращает Float значение из Float значения px. */
+/** Возвращает Float значение в px из Float значения в dp. */
 internal  val Float.dp: Float
     inline get() = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP,
