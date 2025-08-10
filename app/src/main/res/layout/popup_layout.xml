@@ -29,9 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                tools:background="@android:color/darker_gray">
-
-            </com.tera.balloon_simple.RadiusLayout>
+                tools:background="@android:color/darker_gray"/>
 
         </FrameLayout>
 

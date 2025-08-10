@@ -68,12 +68,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createBalloonCenter() {
+//        val groundColor = ContextCompat.getColor(this, R.color.blue)
         val balloon = Balloon.Builder(this)
             .setArrowSize(0)
             .setIsVisibleArrow(false)
-            .setWidth(170)
+            .setWidth(200)
             .setCornerRadius(10f)
             .setLayout(R.layout.custom_layout)
+//            .setBackgroundColor(groundColor)
             .setAnimation(true)
             .build()
 

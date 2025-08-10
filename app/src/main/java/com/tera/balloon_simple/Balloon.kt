@@ -52,6 +52,7 @@ class Balloon private constructor(
     private var balloonArrow: ImageView
 
     private var popupWindow = PopupWindow()
+    private var mMaxWidth = 0
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -62,12 +63,23 @@ class Balloon private constructor(
         balloonContent = mView!!.findViewById(R.id.balloonContent)
         balloonArrow = mView!!.findViewById(R.id.balloonArrow)
 
+        val screen = context.resources.displayMetrics
+        mMaxWidth = screen.widthPixels - 100
+
+        popupWindow = PopupWindow(
+            main,
+            FrameLayout.LayoutParams.WRAP_CONTENT,
+            FrameLayout.LayoutParams.WRAP_CONTENT,
+        )
+
         createByBuilder()
     }
 
     private fun createByBuilder() {
         // 1. Инициализировать фон
         initializeBackground()
+        // 2. Инициализировать корень Balloon
+        initializeBalloonRoot()
         // 3. Инициализировать окно Balloon
         initializeBalloonWindow()
         // 4. Инициализировать пользовательский макет
@@ -94,6 +106,19 @@ class Balloon private constructor(
             )
         }
     }
+
+    // 2. Инициализировать корень Balloon
+    private fun initializeBalloonRoot() {
+        with(balloonWrapper) {
+            (layoutParams as ViewGroup.MarginLayoutParams).setMargins(
+                builder.marginLeft,
+                builder.marginTop,
+                builder.marginRight,
+                builder.marginBottom,
+            )
+        }
+    }
+
 
     // 3. Инициализировать окно Balloon
     private fun initializeBalloonWindow() {
@@ -153,7 +178,12 @@ class Balloon private constructor(
     private fun traverseAndMeasureTextWidth(parent: ViewGroup) {
         parent.forEach { child ->
             if (child is TextView) {
-                child.maxWidth = builder.width
+//                child.maxWidth = builder.width
+                if (builder.width > 0)
+                    child.maxWidth = builder.width
+                else
+                    child.maxWidth = mMaxWidth
+
             } else if (child is ViewGroup) {
                 traverseAndMeasureTextWidth(child)
             }
@@ -270,6 +300,11 @@ class Balloon private constructor(
         var paddingTop: Int = 0
         var paddingRight: Int = 0
         var paddingBottom: Int = 0
+
+        var marginRight: Int = 0
+        var marginLeft: Int = 0
+        var marginTop: Int = 0
+        var marginBottom: Int = 0
 
         var arrowSize: Int = 12.dp
         var arrowDrawable: Drawable? = null

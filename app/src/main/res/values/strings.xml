@@ -6,4 +6,9 @@
     <string name="message2">
         Partly cloudy, with a few clouds hanging over the horizon but most of the sky remaining clear.
     </string>
+
+    <string name="message3">
+        Partly cloudy, with a few clouds hanging over the horizon but most of the sky remaining clear.\n
+        Partly cloudy, with a few clouds hanging over the horizon but most of the sky remaining clear.
+    </string>
 </resources>
