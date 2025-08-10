@@ -8,7 +8,7 @@ To use the ready-made library, add the dependency:
 ```
 dependencies {
 
-    implementation("io.github.uratera:balloon_simple:1.1.0")
+    implementation("io.github.uratera:balloon_simple:1.1.1")
 }
 ```
 
